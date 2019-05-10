@@ -5,6 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     IEnemyState _currentstate;
+    public GameObject player;
+    private float maxSearchRange = 10.0f;
+    private float distance;
+
 
     void Awake()
     {
@@ -19,6 +23,19 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         _currentstate.Update();
+        distance = Vector3.Distance(player.transform.position, transform.position);
+        Searching();
+    }
+
+    void Searching()
+    {
+        if (distance <= maxSearchRange)
+        {
+            ChangeState(new ChaseState());
+        } else
+        {
+            ChangeState(new WanderState());
+        }
     }
 
     void ChangeState(IEnemyState state)
