@@ -5,13 +5,18 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     IEnemyState _currentstate;
+    StatesSubscriber _ss = new StatesSubscriber();
+
     public GameObject player;
     private float maxSearchRange = 10.0f;
     private float distance;
 
-
     void Awake()
     {
+        _ss.Push("Wander", new WanderState());
+        _ss.Push("Chase", new ChaseState());
+        _ss.Push("Attack", new AttackState());
+
         ChangeState(new WanderState());
     }
 
@@ -29,12 +34,14 @@ public class Enemy : MonoBehaviour
 
     void Searching()
     {
+        //TODO: Make the dictonary subscribers list
         if (distance <= maxSearchRange)
         {
-            ChangeState(new ChaseState());
-        } else
+            ChangeState(_ss.GetState("Wander") as IEnemyState);
+        }
+        else
         {
-            ChangeState(new WanderState());
+            ChangeState(_ss.GetState("Chase") as IEnemyState);
         }
     }
 
