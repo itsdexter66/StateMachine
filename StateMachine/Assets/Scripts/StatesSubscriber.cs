@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatesSubscriber
 {
-    Dictionary<string, IState> _states;
+    Dictionary<string, IState> _states = new Dictionary<string, IState>();
 
     public Dictionary<string, IState> States { get; private set; }
 

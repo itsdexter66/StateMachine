@@ -31,12 +31,17 @@ public class Enemy : MonoBehaviour
         _currentstate.Update();
         _distance = Vector3.Distance(player.transform.position, transform.position);
         Searching();
+        Attacking();
     }
 
     void Searching()
     {
-        //TODO: Make the dictonary subscribers list
-        if (_distance <= _maxSearchRange)
+
+        if (_distance <= 1.5f)
+        {
+            ChangeState(_ss.GetState("Attack") as IEnemyState);
+        } 
+        else if (_distance > 1.5f && _distance >= _maxSearchRange) 
         {
             ChangeState(_ss.GetState("Wander") as IEnemyState);
         }
@@ -44,6 +49,13 @@ public class Enemy : MonoBehaviour
         {
             ChangeState(_ss.GetState("Chase") as IEnemyState);
         }
+
+
+    }
+
+    void Attacking()
+    {
+        
     }
 
     void ChangeState(IEnemyState state)

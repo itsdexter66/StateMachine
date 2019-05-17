@@ -17,5 +17,6 @@ public class WanderState : IEnemyState
 
     public void Update()
     {
+
     }
 }
