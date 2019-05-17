@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEnemyState
-{ 
-    void Begin(Enemy enemy);
-    void End();
-    void Update();
+public interface IEnemyState : IState
+{
 }

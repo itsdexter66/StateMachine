@@ -6,7 +6,7 @@ public class ChaseState : IEnemyState
 {
     Enemy _parent;
 
-    private float speed = 0.1f;
+    readonly float _speed = 0.1f;
 
     public void Begin(Enemy enemy)
     {
@@ -19,7 +19,7 @@ public class ChaseState : IEnemyState
 
     public void Update()
     {
-        _parent.transform.position = Vector3.MoveTowards(_parent.transform.position, _parent.player.transform.position, speed);
+        _parent.transform.position = Vector3.MoveTowards(_parent.transform.position, _parent.player.transform.position, _speed);
     }
 
 }
