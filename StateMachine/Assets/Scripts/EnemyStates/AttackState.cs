@@ -17,5 +17,6 @@ public class AttackState : IEnemyState
 
     public void Update()
     {
+        Debug.Log("Attacked");
     }
 }
