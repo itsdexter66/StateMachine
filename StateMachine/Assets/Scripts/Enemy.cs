@@ -21,11 +21,6 @@ public class Enemy : MonoBehaviour
         ChangeState(new WanderState());
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         _currentstate.Update();
@@ -36,7 +31,6 @@ public class Enemy : MonoBehaviour
 
     void Searching()
     {
-
         if (_distance <= 1.5f)
         {
             ChangeState(_ss.GetState("Attack") as IEnemyState);
@@ -49,8 +43,6 @@ public class Enemy : MonoBehaviour
         {
             ChangeState(_ss.GetState("Chase") as IEnemyState);
         }
-
-
     }
 
     void Attacking()
