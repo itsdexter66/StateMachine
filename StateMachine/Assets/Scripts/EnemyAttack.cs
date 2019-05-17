@@ -8,11 +8,6 @@ public class EnemyAttack : MonoBehaviour
     public GameObject enemy;
     float distance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -20,6 +15,7 @@ public class EnemyAttack : MonoBehaviour
         Attacking();
     }
 
+    //Vector2.Distance
     void Attacking()
     {
        distance = Vector2.Distance(player.transform.position, enemy.transform.position);
